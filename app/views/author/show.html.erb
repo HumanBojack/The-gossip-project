@@ -1,5 +1,28 @@
-<h1><%= @author.first_name %> <%= @author.last_name %></h1>
-<p><%= @author.created_at %></p>
-<p><%= @author.age %></p>
-<p><%= @author.city %></p>
-<p><%= @author.description %></p>
+<%= render "header/header" %>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> (<%= @user.gossips.count%> gossips)</h5>
+    <p class="card-text"><%= @user.age %> ans, <%= @user.city.name %></p>
+    <p class="card-text"><%= @user.description %></p>
+    <p class="card-text"><small class="text-muted">Compte créé le <%= @user.created_at.strftime("%d/%m/%Y à %H:%M") %></small></p>
+  </div>
+</div>
+
+<h1 class="display-4 text-center">Ses derniers gossips : </h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<% @user.gossips.last(3).each do |gossip| %>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><%= gossip.title %></h5>
+        <p class="card-text"><%= gossip.content %></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Le <%= gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
