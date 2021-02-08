@@ -1,24 +1,17 @@
 <%= render "header/header" %>
+<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
 
 <div class="container">
-    <div class="row justify-content-lg-center">
-        <div class="card-deck w-50">
-          <div class="card">
-            <div class="card-body">
-            <p class="card-text text-center">
-                <small class="text-muted ">
-                    Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %>
-                </small>
-            </p>
-              <h5 class="card-title"><%= @gossip.title %></h5>
-              <p class="card-text"><%= @gossip.content %></p>
-              <p class="card-text text-right">
-                  <a href="/author/<%= @gossip.user.id %>">
-                      <%= @gossip.user.first_name %>
-                  </a>
-              </p>
-            </div>
-          </div>
-        </div>
+<div class="card-row">
+    <div class="p3">
+      <div class="card text-white" style="background-color: #ffffff2b;">
+        <div class="card-body">
+          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= @gossip.user.first_name %></span>    <a href="/author/<%= @gossip.user.id %>" class="badge badge-success">view profile</a></p>
+          <h5 class="card-title"><%= @gossip.title %></h5>
+          <p class="card-text"><%= @gossip.content %></p>
+      </div>
+    <div class="card-footer text-center" style="background-color: #ffffff1a;">
+      <small class="text-muted">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
+    </div>
     </div>
 </div>

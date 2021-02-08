@@ -1,19 +1,19 @@
 <%= render "header/header" %>
-<h1 class="display-1 text-center mt-5 mb-5 text-warning">The Gossip Project</h1>
+<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
 <div class="container">
 <div class="card-columns">
 <% @gossips.each do |gossip| %>
     <div class="p3">
-      <div class="card">
+      <div class="card text-white" style="background-color: #ffffff2b;">
         <div class="card-body">
-          <p class="card-title text-info">From <%= gossip.user.first_name %></p>
+          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span></p>
           <p class="card-title"><%= gossip.title %></p>
           <div class="text-center">
-            <a class="btn btn-primary btn-sm" href="/gossips/<%= gossip.id %>" role="button">Read</a>
+            <a class="btn btn-outline-success btn-sm" href="/gossips/<%= gossip.id %>" role="button">read</a>
         </div>
       </div>
-    <div class="card-footer text-center">
-      <small class="text-muted">Créé le <%= gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
+    <div class="card-footer text-center" style="background-color: #ffffff1a;">
+      <small class="text-muted">Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
     </div>
     </div>
   <% end %>

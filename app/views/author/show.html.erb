@@ -1,28 +1,39 @@
 <%= render "header/header" %>
 
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> (<%= @user.gossips.count%> gossips)</h5>
-    <p class="card-text"><%= @user.age %> ans, <%= @user.city.name %></p>
-    <p class="card-text"><%= @user.description %></p>
-    <p class="card-text"><small class="text-muted">Compte créé le <%= @user.created_at.strftime("%d/%m/%Y à %H:%M") %></small></p>
+<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> profile</h1>
+
+<div class="container">
+  <div class="card mx-auto" style="width: 18rem; background-color: #ffffff2b">
+    <div class="card-header">
+      <h5 class="card-title text-center" style="color:#e3c82e"><span style="color: #fff;"><%= @user.first_name %></span> <%= @user.last_name.upcase %></h5>
+      <p class="text-white text-center">(<%= @user.gossips.count%> gossips)</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>Member from :</b> <%= @user.created_at.strftime("%Y-%m-%d") %></li>
+      <li class="list-group-item"><b>Age : </b><%= @user.age %></li>
+      <li class="list-group-item"><b>City : </b><%= @user.city.name %></li>
+      <li class="list-group-item"><b>Description : </b><%= @user.description %></li>
+    </ul>
   </div>
 </div>
 
-<h1 class="display-4 text-center text-warning">Ses derniers gossips : </h1>
+<h2 class="display-4 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">last</span> gossips</h2>
 
-<div class="row col-12 row-cols-1 row-cols-md-3 g-4 text-center">
+<div class="container">
+<div class="card-columns">
 <% @user.gossips.last(3).each do |gossip| %>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title"><%= gossip.title %></h5>
-        <p class="card-text"><%= gossip.content %></p>
+  <div class="p3">
+      <div class="card text-white" style="background-color: #ffffff2b;">
+        <div class="card-body">
+          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span></p>
+          <p class="card-title"><%= gossip.title %></p>
+          <div class="text-center">
+            <a class="btn btn-outline-info btn-sm" href="/gossips/<%= gossip.id %>" role="button">read</a>
+        </div>
       </div>
-      <div class="card-footer">
-        <small class="text-muted">Le <%= gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
-      </div>
+    <div class="card-footer text-center" style="background-color: #ffffff1a;">
+      <small class="text-muted">Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
     </div>
-  </div>
-<% end %>
+    </div>
+  <% end %>
 </div>
