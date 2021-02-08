@@ -5,6 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.all.destroy_all
+Gossip.all.destroy_all
+Tag.all.destroy_all
+GivenTag.all.destroy_all
+City.all.destroy_all
+
 20.times do 
 	City.create(name: Faker::Address.unique.city, zip_code: rand(10000..99999))
 end
@@ -15,11 +22,11 @@ end
 end
 
 10.times do
-	Tag.create(title: Faker::Book.genre)
+	Tag.create(title: Faker::Book.unique.genre)
 end
 
 50.times do
-	g = Gossip.create(title: Faker::TvShows::MichaelScott.quote , content: Faker::Movies::Lebowski.quote , user: User.all.sample)
+	g = Gossip.create(title: Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 2) , content: Faker::TvShows::MichaelScott.quote , user: User.all.sample)
 
 	rand(1..3).times do |k|
 		GivenTag.create(gossip: g, tag: Tag.all.sample)
