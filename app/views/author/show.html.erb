@@ -11,7 +11,7 @@
 
 <h1 class="display-4 text-center text-warning">Ses derniers gossips : </h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row col-12 row-cols-1 row-cols-md-3 g-4 text-center">
 <% @user.gossips.last(3).each do |gossip| %>
   <div class="col">
     <div class="card h-100">

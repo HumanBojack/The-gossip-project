@@ -1,4 +1,4 @@
 
 <%= render "header/header" %>
 <h1 class="text-center text-warning m-5 display-4">Comment nous contacter ?</h1>
-<p class="text-center text-warning">Envoyez nous un mail <a href="mailto:oui@gmail.com", class="text-warning">ici</a></p>
+<p class="text-center"><%= mail_to "adresse@bidon.fr", "Envoyez nous un mail ici", class: "text-warning" %></p>
