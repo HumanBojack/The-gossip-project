@@ -1,0 +1,9 @@
+<%= render "header/header" %>
+<ul>
+	<% @gossips.each do |gossip| %>
+		<li>
+			<%= gossip.user.first_name %> :
+			<a href="/gossips/<%= gossip.id %>"><%= gossip.title %></a>
+		</li>
+	<% end %>
+</ul>
