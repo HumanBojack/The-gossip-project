@@ -1,10 +1,22 @@
 <%= render "header/header" %>
 
-<h1>Auteur : 
-    <a href="/author/<%= @gossip.user.id %>">
-        <%= @gossip.user.first_name %>
-    </a>
-</h1>
-<h2><%= @gossip.title %></h2>
-<p><%= @gossip.content %></p>
-<p>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= @gossip.title %></h5>
+      <p class="card-text"><%= @gossip.content %></p>
+      <p class="card-text">
+          <small class="">
+              <a href="/author/<%= @gossip.user.id %>">
+                  <%= @gossip.user.first_name %>
+              </a>
+          </small>
+      </p>
+      <p class="card-text">
+          <small class="text-muted">
+              Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %>
+          </small>
+      </p>
+    </div>
+  </div>
+</div>
