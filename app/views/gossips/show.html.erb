@@ -1,6 +1,10 @@
 <%= render "header/header" %>
 
-<h1>Auteur : <%= @gossip.user.first_name %></h1>
+<h1>Auteur : 
+    <a href="/author/<%= @gossip.user.id %>">
+        <%= @gossip.user.first_name %>
+    </a>
+</h1>
 <h2><%= @gossip.title %></h2>
 <p><%= @gossip.content %></p>
 <p>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
