@@ -1,41 +1,20 @@
 <%= render "header/header" %>
 
 <div class="container">
-
-<div class="row">
-  <div class="col-sm">
-    One of three columns
-  </div>
-  <div class="col-sm">
-    One of three columns
-  </div>
-  <div class="col-sm">
-    One of three columns
-  </div>
-</div>
-
-	
-
-<div class="card-deck">
-  <% @gossips.each do |gossip| %>
-  <div class="card">
-    <div class="card-body">
-
-      <p class="card-title text-info">From <%= gossip.user.first_name %></p>
-      <p class="card-title"><%= gossip.title %></p>
-    
-      <div class="text-center">
-          <a class="btn btn-primary btn-sm" href="/gossips/<%= gossip.id %>" role="button">Read</a>
+<div class="card-columns">
+<% @gossips.each do |gossip| %>
+    <div class="p3">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title text-info">From <%= gossip.user.first_name %></p>
+          <p class="card-title"><%= gossip.title %></p>
+          <div class="text-center">
+            <a class="btn btn-primary btn-sm" href="/gossips/<%= gossip.id %>" role="button">Read</a>
+        </div>
       </div>
-
+    <div class="card-footer text-center">
+      <small class="text-muted">Créé le <%= gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
     </div>
-
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
     </div>
-
-  </div>
   <% end %>
-</div>
-
 </div>
