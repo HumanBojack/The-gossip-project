@@ -12,7 +12,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-  	@gossip = Gossip.new(title: params[:title], content: params[:content] , user: User.find(49))
+  	@gossip = Gossip.new(title: params[:title], content: params[:content] , user: User.find_by(first_name: "Anonymous"))
   	if @gossip.save
   		redirect_to @gossip
   	else

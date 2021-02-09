@@ -1,9 +1,0 @@
-/*.form {margin-top: 25px;}*/
-/*.alert{margin-top: 56px;}*/
-/*.navbar {margin-bootom: 25px;}*/
-.alert:nth-of-type(1){margin-top: 56px;}
-.jumbotron {margin-top: 70px; display:flex; justify-content: center; background-color: #2B2B2B;}
-.form {width: 30%; display: flex; flex-direction: column; justify-content: center; align-items: center}
-.form label {color: #E3C82E; font-size: 1.5em;}
-.btn {margin-top: 5px;}
-textarea {width: 100%;}
