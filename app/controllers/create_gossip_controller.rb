@@ -1,0 +1,2 @@
+class CreateGossipController < ApplicationController
+end
