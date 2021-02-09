@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "new_gossip.css" %>
+<%= render "header/header" %>
+
+<% @gossip.errors.each do |error| %>
+	<div class="alert alert-danger" role="alert">
+    <%= error.message %>
+	</div>
+<% end %>
+
+<div class="jumbotron">
+<%= form_tag url_for(action: "create"), method: "post", class: "form" do %>
+
+	<%= label_tag "Gossip Title : " %><br/>
+	<%= text_field_tag "title", @gossip.title %><br/>
+
+	<%= label_tag "The Gossip : " %><br/>
+	<%= text_area_tag "content", @gossip.content %><br/>
+
+	<%= submit_tag "Create Gossip", class: "btn btn-warning" %>
+
+<% end %>
+</div>
