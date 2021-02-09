@@ -1,24 +1,24 @@
 <%= render "header/header" %>
 <h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
 
-<div class="container">
-<div class="card-row">
-    <div class="p3">
-      <div class="card text-white" style="background-color: #ffffff2b;">
-        <div class="card-body">
-          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e">Prénom</span>    <a href="/author/userid" class="badge badge-success">view profile</a></p>
-          <h5 class="card-title">TITLE</h5>
-          <p class="card-text">CONTENT</p>
-      </div>
-    <div class="card-footer text-center" style="background-color: #ffffff1a;">
-      <small class="text-muted">Created at 000000000</small>
-    </div>
-    </div>
-</div>
+<%= render "header/header" %>
 
-<form action= <%= gossips_path %> method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="text" name="title">
-  <input type="text" name="content">
-  <input type="submit" value="Valider">
-</form>
+<% @gossip.errors.each do |error| %>
+	<div class="alert alert-danger" role="alert">
+    <%= error.message %>
+	</div>
+<% end %>
+
+<div class="jumbotron">
+  <%= form_tag url_for(action: "create"), method: "post", class: "form" do %>
+
+    <%= label_tag "Gossip Title : " %><br/>
+    <%= text_field_tag "title", @gossip.title %><br/>
+
+    <%= label_tag "The Gossip : " %><br/>
+    <%= text_area_tag "content", @gossip.content %><br/>
+
+    <%= submit_tag "Create Gossip", class: "btn btn-warning" %>
+
+  <% end %>
+</div>
