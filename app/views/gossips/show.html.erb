@@ -10,8 +10,9 @@
           <h5 class="card-title"><%= @gossip.title %></h5>
           <p class="card-text"><%= @gossip.content %></p>
       </div>
-    <div class="card-footer text-center" style="background-color: #ffffff1a;">
-      <small class="text-muted">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %></small>
-    </div>
+      <div class="card-footer text-center" style="background-color: #ffffff1a;">
+        <small class="text-muted">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %></small>
+        <%= link_to "Delete", gossip_path(@gossip.id), method: :delete, data: { confirm: "Are you sure ?"} %>
+      </div>
     </div>
 </div>
