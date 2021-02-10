@@ -20,8 +20,13 @@
 <% @gossip.comments.each do |comment| %>
   <p><%= comment.user.first_name %></p>
   <p><%= comment.content %></p>
+  <%= link_to "Edit comment", edit_gossip_comment_path(@gossip.id, comment.id) %>
+  <%= link_to "Delete comment", gossip_comment_path(comment), method: :delete, data: { confirm: "Are you sure ?"} %>
 <% end %>
 
 
-<%= render "layouts/comment" %>
+<%= form_with model: [@gossip, @gossip.comments.build] do |comment| %>
 
+  <%= comment.text_area :content %>
+  <%= comment.submit %>
+<% end %>

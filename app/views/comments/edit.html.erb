@@ -1,0 +1,5 @@
+<%= form_with model: [@gossip, @comment] do |comment| %>
+
+  <%= comment.text_area :content %>
+  <%= comment.submit %>
+<% end %>
