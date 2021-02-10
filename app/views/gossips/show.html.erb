@@ -16,3 +16,12 @@
       </div>
     </div>
 </div>
+
+<% @gossip.comments.each do |comment| %>
+  <p><%= comment.user.first_name %></p>
+  <p><%= comment.content %></p>
+<% end %>
+
+<%= link_to "Add a comment", new_comment_path, class:"btn btn-warning" %>
+<%= render "layouts/comment", comment: @gossip.comments %>
+

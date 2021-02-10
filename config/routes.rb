@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 	resources :gossips
 	resources :user
 	resources :cities, only: [:create, :show]
+	resources :comments, except: [:show, :index]
 	# get "gossips/:id", to: "gossips#show"
   get 'welcome/:name', to: "welcome#show"
   get '/contact', to: "contact#show"

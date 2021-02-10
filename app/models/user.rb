@@ -6,4 +6,5 @@ class User < ApplicationRecord
 	has_many :gossips
 	has_many :receivers
 	has_many :private_messages
+	has_many :comments
 end

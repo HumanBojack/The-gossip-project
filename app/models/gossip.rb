@@ -4,4 +4,5 @@ class Gossip < ApplicationRecord
 	validates :user, presence: true
 	belongs_to :user
 	has_many :given_tags
+	has_many :comments
 end
