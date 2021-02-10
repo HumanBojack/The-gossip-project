@@ -12,7 +12,8 @@ class GossipsController < ApplicationController
   end
 
   def create
-  	@gossip = Gossip.new(title: params[:title], content: params[:content] , user: User.find_by(first_name: "Anonymous"))
+    @gossip = Gossip.new(gossip_params)
+    @gossip.user = User.find_by(first_name: "Anonymous")
   	if @gossip.save
   		redirect_to @gossip
   	else
@@ -20,8 +21,26 @@ class GossipsController < ApplicationController
   	end
   end
 
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
 
-  # private
-  # def gossip_params
-  # 	params.require(:gossip).permit()
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(gossip_params)
+      redirect_to @gossip 
+    else
+      rend :edit
+    end
+  end
+
+  def destroy
+
+  end
+
+
+  private
+  def gossip_params
+  	params.require(:gossip).permit(:title, :content)
+  end
 end

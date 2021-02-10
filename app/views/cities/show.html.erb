@@ -1,7 +1,8 @@
-<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
+<h1 class="text-warning"><%= @city.name %></h1>
 <div class="container">
 <div class="card-columns">
-<% @gossips.each do |gossip| %>
+<% @city.users.each do |user| %>
+	<% user.gossips.each do |gossip| %>
     <div class="p3">
       <div class="card text-white" style="background-color: #ffffff2b;">
         <div class="card-body">
@@ -15,5 +16,6 @@
       <small class="text-muted">Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
     </div>
     </div>
+    <% end %>
   <% end %>
 </div>

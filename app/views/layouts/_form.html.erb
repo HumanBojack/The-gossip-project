@@ -1,0 +1,11 @@
+<div class="jumbotron">
+<%= form_with model: @gossip do |form| %>
+	<%= form.label :title, "Title" %>
+	<%= form.text_field :title %>
+
+	<%= form.label :content, "Gossip content" %>
+	<%= form.text_area :content %>
+
+	<%= form.submit %>
+<% end %>
+</div>
