@@ -10,5 +10,5 @@ textarea {width: 100%;}
 .Gyellow:hover{color: #b59f24;}
 .Gpurple{color:#cb6fdd}
 .Gpurple:hover{color:#9f68aa}
-.Gwhite{color:#FFF}
-.Gwhite:hover{color:#FFF}
+.Gwhite a{color:#FFF}
+.Gwhite a:hover{color:#FFF}
