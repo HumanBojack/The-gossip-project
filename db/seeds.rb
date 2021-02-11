@@ -11,6 +11,8 @@ Gossip.all.destroy_all
 Tag.all.destroy_all
 GivenTag.all.destroy_all
 City.all.destroy_all
+Like.all.destroy_all
+Comment.all.destroy_all
 
 20.times do 
 	City.create(name: Faker::Address.unique.city, zip_code: rand(10000..99999))
@@ -18,7 +20,7 @@ end
 
 15.times do 
 	first_name = Faker::Name.first_name
-	User.create(first_name: first_name, last_name: Faker::Name.last_name, description: Faker::TvShows::SouthPark.quote, email: Faker::Internet.free_email(name: first_name), age: rand(18..99), city: City.all.sample)
+	User.create(first_name: first_name, last_name: Faker::Name.last_name, description: Faker::TvShows::SouthPark.quote, email: Faker::Internet.unique.free_email(name: first_name), age: rand(18..99), city: City.all.sample, password: "password")
 end
 
 10.times do
@@ -31,6 +33,14 @@ end
 	rand(1..3).times do |k|
 		GivenTag.create(gossip: g, tag: Tag.all.sample)
 	end
+end
+
+200.times do
+	Like.create(user: User.all.sample, gossip: Gossip.all.sample)
+end
+
+200.times do
+	Comment.create(user: User.all.sample, gossip: Gossip.all.sample, content: Faker::GreekPhilosophers.quote)
 end
 
 #Create a message that gets send to two receivers

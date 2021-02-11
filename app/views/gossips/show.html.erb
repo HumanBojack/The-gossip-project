@@ -17,8 +17,8 @@
           <p class="card-text text-dark"><%= @gossip.content %></p>
 
           <p class="text-dark text-center"><%= @gossip.likes.count %> <i class="fas fa-heart"></i></p>
-          <div class="badge badge-success Gwhite"><%= link_to "| you like ? |", new_gossip_like_path(@gossip.id) unless already_liked?  %></div>
-          <div class="badge badge-secondary"><%= link_to "| gossip liked |", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), method: :delete if already_liked? %></div>
+          <%= link_to "Like", new_gossip_like_path(@gossip.id), class:"btn btn-success" unless already_liked?  %>
+         <%= link_to "Dislike", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), class:"btn btn-danger" , method: :delete if already_liked? %>
           
 
       </div>
