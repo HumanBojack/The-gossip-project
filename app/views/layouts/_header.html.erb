@@ -12,7 +12,11 @@
       <%= link_to "team", team_path, class:"nav-link font-weight-light" %>
       </li>
     </ul>
-    <%= link_to "Create a Gossip", new_gossip_path, class:"btn btn-warning" %>
+    <%= current_user.first_name if is_logged_in? %>
+
+    <%= link_to "Se déconnecter", session_path(session.id), method: :delete, class:"btn btn-warning" if is_logged_in? %>
+    <%= link_to "Create a Gossip", new_gossip_path, class:"btn btn-warning" if is_logged_in? %>
+    <%= link_to "Login / Register", new_session_path, class:"btn btn-warning" unless is_logged_in? %>
   </div>
 </div>
 </nav>

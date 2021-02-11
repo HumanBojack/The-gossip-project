@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
 
-
 	def create
 		@comment = Comment.new(comment_params)
-		@comment.update(gossip: Gossip.find(params[:gossip_id]), user: User.find_by(first_name: "Anonymous"))
+		@comment.update(gossip: Gossip.find(params[:gossip_id]), user: current_user)
 
 	 @comment.save
 	 redirect_to gossip_path(params[:gossip_id])

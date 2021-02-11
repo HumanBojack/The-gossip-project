@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+  before_action :login_detection, except: [:index]
+  before_action :creator_detection, only: [:edit, :update, :delete]
+
   def index
   	@gossips = Gossip.all
   end
@@ -14,7 +17,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(gossip_params)
-    @gossip.user = User.find_by(first_name: "Anonymous")
+    @gossip.user = current_user
   	if @gossip.save
   		redirect_to @gossip
   	else
@@ -37,8 +40,6 @@ class GossipsController < ApplicationController
 
   def destroy
     @gossip = Gossip.find(params[:id])
-    puts @gossip
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     @gossip.destroy
     redirect_to gossips_path
   end
@@ -47,5 +48,13 @@ class GossipsController < ApplicationController
   private
   def gossip_params
   	params.require(:gossip).permit(:title, :content)
+  end
+
+  def login_detection
+    redirect_to gossips_path, alert: "You need to be logged in to do that" unless is_logged_in?
+  end
+
+  def creator_detection
+    redirect_to gossip_path(params[:id]) unless Gossip.find(params[:id]).user == current_user
   end
 end
