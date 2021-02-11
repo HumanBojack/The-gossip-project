@@ -1,20 +1,22 @@
 <h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
+
 <div class="container">
-<div class="card-columns">
-<% @gossips.each do |gossip| %>
+  <div class="card-columns">
+  <% @gossips.each do |gossip| %>
     <div class="p3">
-      <div class="card text-white" style="background-color: #ffffff2b;">
+      <div class="card">
         <div class="card-body">
-          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span>  <i class="fas fa-heart"></i> <%= gossip.likes.count %></p>
-          <p class="card-title"><%= gossip.title %></p>
-          <p><%= gossip.comments.count %> Comments</p>
-          <div class="text-center">
-          <%= link_to "read", gossip_path(gossip), class:"btn btn-outline-success btn-sm" %>
+        <p class="card-title" style="font-weight:200">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span>  <span class="red"><i class="fas fa-heart"></i></span> <%= gossip.likes.count %></p>
+        <p class="card-title"><%= gossip.title %></p>
+        <p><%= gossip.comments.count %> Comments</p>
+        <div class="text-center">
+          <%= link_to "read", gossip_path(gossip), class:"btn btn-outline-secondary btn-sm" %>
         </div>
       </div>
-    <div class="card-footer text-center" style="background-color: #ffffff1a;">
-      <small>Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
+      <div class="card-footer text-center" style="background-color: #ffffff1a;">
+        <small>Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
+      </div>
     </div>
-    </div>
+  </div>
   <% end %>
 </div>

@@ -1,4 +1,4 @@
-<h1 class="display-1 text-center mt-3 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
+<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
 
 <div class="container">
 <div class="card-row">
@@ -10,22 +10,24 @@
             <span style="font-weight:500">
               <a href="<%= user_path(@gossip.user.id) %>" class="Gyellow text-decoration-none">
               <%= @gossip.user.first_name %>
-              <%= link_to "Delete", gossip_path(@gossip.id), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure ?"} if @gossip.user.id == current_user.id %>
               </a>
             </span>    
           </h4>
           <h3 class="card-title text-dark px-5"><%= @gossip.title %></h3>
           <p class="card-text text-dark px-5"><%= @gossip.content %></p>
 
-          <p class="text-dark text-center"><i class="fas fa-heart"></i> <%= @gossip.likes.count %></p>
+          <div class="text-center mb-2">
+          <%= link_to "Delete", gossip_path(@gossip.id), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure ?"} if @gossip.user.id == current_user.id %>
+          </div>
           <div class="text-center">
           <%= link_to "Like this gossip", new_gossip_like_path(@gossip.id), class:"btn btn-danger" unless already_liked?  %>
           <%= link_to "Disike this gossip", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), class:"btn btn-outline-secondary" , method: :delete if already_liked? %>
           </div>
+          <p class="text-dark text-center"><span class="red"><i class="fas fa-heart"></i></span> <%= @gossip.likes.count %></p>
 
       </div>
       <div class="card-footer text-center bg-dark">
-        <small class="text-white">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"Gpurple"%></small>
+        <small class="text-white">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"text-warning"%></small>
       </div>
     </div>
 </div>
@@ -42,9 +44,10 @@
 <% end %>
 
 
-<%= form_with model: [@gossip, @gossip.comments.build], class:"d-flex" do |comment| %>
+<%= form_with model: [@gossip, @gossip.comments.build], class:"" do |comment| %>
+  <h1 class="h3 mb-3 font-weight-normal Gyellow text-center">Leave a comment</h1>
   <%= comment.text_area :content, class:"form-control " %>
-  <%= comment.submit class:"btn btn-warning" %>
+  <%= comment.submit "Post", class:"btn btn-warning mt-3" %>
 <% end %>
 
 

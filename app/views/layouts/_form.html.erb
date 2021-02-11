@@ -1,10 +1,9 @@
-<div class="jumbotron">
-<%= form_with model: @gossip, class:"d-flex flex-column align-items-left w-25 form-group" do |form| %>
-	<%= form.label :title, "Title" %>
-	<%= form.text_field :title, class:"form-control" %>
+<div class="form mx-auto mt-5">
+<h1 class="h3 mb-3 font-weight-normal Gyellow text-center">Please gossip in</h1>
+<%= form_with model: @gossip, class:"form-signin text-center" do |form| %>
+	<%= form.text_field :title, placeholder: 'Title', class:"form-control" %>
 
-	<%= form.label :content, "Gossip content" %>
-	<%= form.text_area :content, class:"form-control" %>
+	<%= form.text_area :content, placeholder: 'Gossip content', class:"form-control mt-2" %>
 
 	<%= form.submit "Create a gossip", class:"btn btn-warning mt-3"%>
 <% end %>

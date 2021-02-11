@@ -1,4 +1,4 @@
-<h1 class="display-1 text-center mt-3 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> profile</h1>
+<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> profile</h1>
 
 <div class="container">
   <div class="card mx-auto" style="width: 18rem; background-color: #ffffff2b">
@@ -22,16 +22,17 @@
 <div class="card-columns">
 <% @user.gossips.last(3).each do |gossip| %>
   <div class="p3">
-      <div class="card text-white" style="background-color: #ffffff2b;">
+      <div class="card">
         <div class="card-body">
           <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span></p>
           <p class="card-title"><%= gossip.title %></p>
           <div class="text-center">
-            <a class="btn btn-outline-info btn-sm" href="/gossips/<%= gossip.id %>" role="button">read</a>
+          <%= link_to "read", gossip_path(gossip), class:"btn btn-outline-secondary btn-sm" %>
         </div>
       </div>
-    <div class="card-footer text-center" style="background-color: #ffffff1a;">
+      <div class="card-footer text-center" style="background-color: #ffffff1a;">
       <small class="text-muted">Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
+    </div>
     </div>
     </div>
   <% end %>
