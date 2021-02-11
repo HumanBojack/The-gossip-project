@@ -1,17 +1,31 @@
-<%= form_with model: @user do |f| %>
-	<%= f.label :first_name, "First name : " %>
-		<%= f.text_field :first_name %>	
-	<%= f.label :last_name, "Last name : " %>
-		<%= f.text_field :last_name %>
-	<%= f.label :password, "Password : " %>
-		<%= f.password_field :password %>
-	<%= f.label :email, "Email : " %>
-		<%= f.text_field :email %>
-	<%= f.label :city, "City :" %>
-		<%= select_tag "city", options_for_select(City.all.map{|i| i.name}) %>
-	<%= f.label :age, "Age : " %>
-		<%= f.text_field :age %>
-	<%= f.label :description, "Description : " %>
-		<%= f.text_area :description %>
-	<%= f.submit "Start gossiping", class:""%>
-<% end %>
+<div class="form mx-auto mt-5">
+	<%= form_with model: @user, class:"form-group" do |f| %>
+	<div class="row">
+		<div class="col">
+			<%= f.label :first_name, "First name : " %>
+			<%= f.text_field :first_name, class:"form-control"%>	
+		</div>
+		<div class="col">
+			<%= f.label :last_name, "Last name : " %>
+			<%= f.text_field :last_name, class:"form-control"%>
+		</div>
+	</div>
+		<%= f.label :email, "Email : " %>
+			<%= f.text_field :email, class:"form-control"%>
+	<div class="row">
+		<div class="col">
+		<%= f.label :age, "Age : " %>
+			<%= f.text_field :age, class:"form-control"%>
+		</div>
+		<div class="col">
+		<%= f.label :city, "City :" %>
+			<%= select_tag "city", options_for_select(City.all.map{|i| i.name}), class:"form-control" %>
+		</div>
+	</div>
+		<%= f.label :password, "Password : " %>
+			<%= f.password_field :password, class:"form-control"%>
+		<%= f.label :description, "Description : " %>
+			<%= f.text_area :description, class:"form-control"%>
+		<%= f.submit "Start gossiping", class:"btn btn-lg btn-warning btn-block mt-3"%>
+	<% end %>
+</div>

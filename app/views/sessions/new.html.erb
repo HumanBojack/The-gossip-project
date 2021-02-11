@@ -1,6 +1,14 @@
-<%= form_for :sessions, :url => sessions_path do |f| %>
-	<%= f.text_field :email %>
-	<%= f.password_field :password %>
-	<%= f.submit "Sign in", class:"" %>
-<% end %>
-<%= link_to "Don't have an account yet ? Register", new_user_path %>
+<div class="form mx-auto mt-5">
+	<%= form_for :sessions, :url => sessions_path, class:"form-signin text-center" do |f| %>
+		<h1 class="h3 mb-3 font-weight-normal Gyellow">Please sign in</h1>
+		<%= f.email_field :email, class:"form-control" %>
+		<%= f.password_field :password, class:"form-control" %>
+
+		<%= f.submit "Sign in", class:"btn btn-lg btn-warning btn-block mt-3" %>
+	<% end %>
+	<%= link_to "Don't have an account yet ? Register", new_user_path , class:"mt-5 text-white" %>
+</div>
+	<!--<div class="checkbox mb-3">
+			<label>
+				<input type="checkbox" value="remember-me"> Remember me
+			</label>-->

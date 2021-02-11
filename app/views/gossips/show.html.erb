@@ -5,7 +5,7 @@
     <div class="p3">
       <div class="card text-white">
         <div class="card-body">
-          <h2 class="card-title text-dark text-center font-weight-light">
+          <h4 class="card-title text-dark font-weight-light">
             from
             <span style="font-weight:500">
               <a href="<%= user_path(@gossip.user.id) %>" class="Gyellow text-decoration-none">
@@ -13,15 +13,15 @@
               <%= link_to "Delete", gossip_path(@gossip.id), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure ?"} if @gossip.user.id == current_user.id %>
               </a>
             </span>    
-          </h2>
-          <h3 class="card-title text-dark"><%= @gossip.title %></h3>
-          <p class="card-text text-dark"><%= @gossip.content %></p>
+          </h4>
+          <h3 class="card-title text-dark px-5"><%= @gossip.title %></h3>
+          <p class="card-text text-dark px-5"><%= @gossip.content %></p>
 
-          <p class="text-dark text-center"><%= @gossip.likes.count %> <i class="fas fa-heart"></i></p>
-
-          <%= link_to "Like", new_gossip_like_path(@gossip.id), class:"btn btn-success" unless already_liked?  %>
-          <%= link_to "Dislike", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), class:"btn btn-danger" , method: :delete if already_liked? %>
-
+          <p class="text-dark text-center"><i class="fas fa-heart"></i> <%= @gossip.likes.count %></p>
+          <div class="text-center">
+          <%= link_to "Like this gossip", new_gossip_like_path(@gossip.id), class:"btn btn-danger" unless already_liked?  %>
+          <%= link_to "Disike this gossip", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), class:"btn btn-outline-secondary" , method: :delete if already_liked? %>
+          </div>
 
       </div>
       <div class="card-footer text-center bg-dark">
