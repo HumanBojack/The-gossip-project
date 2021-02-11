@@ -4,3 +4,11 @@
 .form label {color: #E3C82E; font-size: 1.5em;}
 .form .btn {margin-top: 5px;}
 textarea {width: 100%;}
+.grad{background-image: var(--bs-gradient)}
+.margL{margin-left:15px ;}
+.Gyellow{color: #e3c82e;}
+.Gyellow:hover{color: #b59f24;}
+.Gpurple{color:#cb6fdd}
+.Gpurple:hover{color:#9f68aa}
+.Gwhite{color:#FFF}
+.Gwhite:hover{color:#FFF}

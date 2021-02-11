@@ -12,10 +12,11 @@
       <div class="card text-white" style="background-color: #ffffff2b;">
         <div class="card-body">
           <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span></p>
+          <p><i class="fas fa-heart"></i> <%= gossip.likes.count %></p>
           <p class="card-title"><%= gossip.title %></p>
           <p><%= gossip.comments.count %> Comments</p>
           <div class="text-center">
-            <a class="btn btn-outline-success btn-sm" href="/gossips/<%= gossip.id %>" role="button">read</a>
+          <%= link_to "read", gossip_path(gossip), class:"btn btn-outline-success btn-sm" %>
         </div>
       </div>
     <div class="card-footer text-center" style="background-color: #ffffff1a;">

@@ -1,19 +1,29 @@
-<h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
+<h1 class="display-1 text-center mt-3 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
 
 <div class="container">
 <div class="card-row">
     <div class="p3">
-      <div class="card text-white" style="background-color: #ffffff2b;">
+      <div class="card text-white">
         <div class="card-body">
-          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= @gossip.user.first_name %></span>    
-            <a href="<%= user_path(@gossip.user.id) %>" class="badge badge-success">view profile</a>
-            <%= link_to "Liker", new_gossip_like_path(@gossip.id) unless already_liked? %>
-            <%= link_to "Unliker", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), method: :delete if already_liked? %></p>
-          <h5 class="card-title"><%= @gossip.title %></h5>
-          <p class="card-text"><%= @gossip.content %></p>
+          <h2 class="card-title text-dark text-center font-weight-light">
+            from
+            <span style="font-weight:500">
+              <a href="<%= user_path(@gossip.user.id) %>" class="Gyellow text-decoration-none">
+              <%= @gossip.user.first_name %>
+              </a>
+            </span>    
+          </h2>
+          <h3 class="card-title text-dark"><%= @gossip.title %></h3>
+          <p class="card-text text-dark"><%= @gossip.content %></p>
+
+          <p class="text-dark text-center"><%= @gossip.likes.count %> <i class="fas fa-heart"></i></p>
+          <div class="badge badge-success Gwhite"><%= link_to "| you like ? |", new_gossip_like_path(@gossip.id) unless already_liked?  %></div>
+          <div class="badge badge-secondary"><%= link_to "| gossip liked |", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), method: :delete if already_liked? %></div>
+          
+
       </div>
-      <div class="card-footer text-center" style="background-color: #ffffff1a;">
-        <small class="text-muted">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %></small>
+      <div class="card-footer text-center bg-dark">
+        <small class="text-white">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"Gpurple"%></small>
         <%= link_to "Delete", gossip_path(@gossip.id), method: :delete, data: { confirm: "Are you sure ?"} if @gossip.user.id == current_user.id %>
       </div>
     </div>
