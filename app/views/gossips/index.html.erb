@@ -1,9 +1,3 @@
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-<% end %>
-
 <h1 class="display-1 text-center mt-5 mb-5" style="font-weight:100;color:#e3c82e"><span style="color: #fff;">gossip</span> project</h1>
 <div class="container">
 <div class="card-columns">
@@ -11,8 +5,7 @@
     <div class="p3">
       <div class="card text-white" style="background-color: #ffffff2b;">
         <div class="card-body">
-          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span></p>
-          <p><i class="fas fa-heart"></i> <%= gossip.likes.count %></p>
+          <p class="card-title" style="font-weight:200;color:#fff">from <span style="font-weight:500;color:#e3c82e"><%= gossip.user.first_name %></span>  <i class="fas fa-heart"></i> <%= gossip.likes.count %></p>
           <p class="card-title"><%= gossip.title %></p>
           <p><%= gossip.comments.count %> Comments</p>
           <div class="text-center">
@@ -20,7 +13,7 @@
         </div>
       </div>
     <div class="card-footer text-center" style="background-color: #ffffff1a;">
-      <small class="text-muted">Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
+      <small>Created at <%= gossip.created_at.strftime("%Y-%m-%d | %H:%M") %></small>
     </div>
     </div>
   <% end %>

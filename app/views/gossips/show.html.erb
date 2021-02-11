@@ -10,6 +10,7 @@
             <span style="font-weight:500">
               <a href="<%= user_path(@gossip.user.id) %>" class="Gyellow text-decoration-none">
               <%= @gossip.user.first_name %>
+              <%= link_to "Delete", gossip_path(@gossip.id), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure ?"} if @gossip.user.id == current_user.id %>
               </a>
             </span>    
           </h2>
@@ -19,26 +20,31 @@
           <p class="text-dark text-center"><%= @gossip.likes.count %> <i class="fas fa-heart"></i></p>
 
           <%= link_to "Like", new_gossip_like_path(@gossip.id), class:"btn btn-success" unless already_liked?  %>
-         <%= link_to "Dislike", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), class:"btn btn-danger" , method: :delete if already_liked? %>
+          <%= link_to "Dislike", gossip_like_path(@gossip, @gossip.likes.find_by(user: current_user)), class:"btn btn-danger" , method: :delete if already_liked? %>
+
 
       </div>
       <div class="card-footer text-center bg-dark">
         <small class="text-white">Created at <%= @gossip.created_at.strftime("%Y-%m-%d | %H:%M") %>, at : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id), class:"Gpurple"%></small>
-        <%= link_to "Delete", gossip_path(@gossip.id), method: :delete, data: { confirm: "Are you sure ?"} if @gossip.user.id == current_user.id %>
       </div>
     </div>
 </div>
 
 <% @gossip.comments.each do |comment| %>
-  <p><%= comment.user.first_name %></p>
-  <p><%= comment.content %></p>
-  <%= link_to "Edit comment", edit_gossip_comment_path(@gossip.id, comment.id) %>
-  <%= link_to "Delete comment", gossip_comment_path(comment), method: :delete, data: { confirm: "Are you sure ?"}  %>
+  <div class="card mt-3 mb-3">
+    <div class="card-body">
+      <h4 class="card-title text-warning "><%= comment.user.first_name %></h4>
+      <p class="card-text"><%= comment.content %></p>
+      <%= link_to "Edit comment", edit_gossip_comment_path(@gossip.id, comment.id), class:"btn btn-warning" if comment.user == current_user %>
+      <%= link_to "Delete comment", gossip_comment_path(@gossip, comment), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure ?"} if comment.user == current_user %>
+    </div>
+  </div>
 <% end %>
 
 
-<%= form_with model: [@gossip, @gossip.comments.build] do |comment| %>
-
-  <%= comment.text_area :content %>
-  <%= comment.submit %>
+<%= form_with model: [@gossip, @gossip.comments.build], class:"d-flex" do |comment| %>
+  <%= comment.text_area :content, class:"form-control " %>
+  <%= comment.submit class:"btn btn-warning" %>
 <% end %>
+
+

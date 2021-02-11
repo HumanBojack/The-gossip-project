@@ -1,6 +1,6 @@
 class GossipsController < ApplicationController
   before_action :login_detection, except: [:index]
-  before_action :creator_detection, only: [:edit, :update, :delete]
+  before_action :creator_detection, only: [:edit, :update, :destroy]
 
   def index
   	@gossips = Gossip.all
@@ -19,9 +19,9 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(gossip_params)
     @gossip.user = current_user
   	if @gossip.save
-  		redirect_to @gossip
+  		redirect_to @gossip, notice: "Successfully created"
   	else
-  		render :new
+  		redirect_to new_gossip_path, alert: "Error: Title and Body must exist"
   	end
   end
 
@@ -32,7 +32,7 @@ class GossipsController < ApplicationController
   def update
     @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
-      redirect_to @gossip 
+      redirect_to @gossip, notice: "Successfully updated"
     else
       rend :edit
     end
@@ -41,7 +41,7 @@ class GossipsController < ApplicationController
   def destroy
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
-    redirect_to gossips_path
+    redirect_to gossips_path, notice: "Post deleted !"
   end
 
 

@@ -1,5 +1,6 @@
 <%= form_for :sessions, :url => sessions_path do |f| %>
 	<%= f.text_field :email %>
 	<%= f.password_field :password %>
-	<%= f.submit %>
+	<%= f.submit "Sign in", class:"" %>
 <% end %>
+<%= link_to "Don't have an account yet ? Register", new_user_path %>

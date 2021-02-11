@@ -1,5 +1,5 @@
-<%= form_with model: [@gossip, @comment] do |comment| %>
+<%= form_with model: [@gossip, @comment], class:"jumbotron" do |comment| %>
 
-  <%= comment.text_area :content %>
-  <%= comment.submit %>
+  <%= comment.text_area :content, class:"form-control" %>
+  <%= comment.submit class:"btn btn-warning" %>
 <% end %>
