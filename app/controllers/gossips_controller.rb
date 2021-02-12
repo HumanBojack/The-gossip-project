@@ -21,7 +21,8 @@ class GossipsController < ApplicationController
   	if @gossip.save
   		redirect_to @gossip, notice: "Successfully created"
   	else
-  		redirect_to new_gossip_path, alert: "Error: Title and Body must exist"
+      flash.now.alert = "Error: Title and Body must exist"
+      render :new
   	end
   end
 
