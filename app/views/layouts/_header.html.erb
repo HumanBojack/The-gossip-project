@@ -16,7 +16,7 @@
   </ul>
 
   <ul class="navbar-nav mt-2 mt-lg-0">
-      <li class="nav-item"><%= link_to current_user.first_name, profile_path, class:"nav-link" if is_logged_in? %></li>
+      <li class="nav-item d-none d-sm-block"><%= link_to current_user.first_name, profile_path, class:"nav-link" if is_logged_in? %></li>
       <li class="nav-item margL"><%= link_to "Create a Gossip", new_gossip_path, class:"nav-link btn-sm btn-warning" if is_logged_in? %></li>
       <li class="nav-item margL"><%= link_to "Sign out", session_path(session.id), method: :delete, class:"nav-link btn-sm" if is_logged_in? %></li>
       <li class="nav-item margL"><%= link_to "Sign in / Register", new_session_path, class:"nav-link btn-sm btn-warning" unless is_logged_in? %></li>
