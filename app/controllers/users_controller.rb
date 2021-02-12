@@ -4,16 +4,16 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		user = User.new(user_params)
-		user.city = City.find_by(name: params[:city])
+		@user = User.new(user_params)
+		@user.city = City.find_by(name: params[:city])
 
-		if user.save
-			log_in(user)
-			puts params["user"]["cookies"]
-			remember(user) if params["user"]["cookies"] == "1"
+		if @user.save
+			log_in(@user)
+			remember(@user) if params["user"]["cookies"] == "1"
 			redirect_to gossips_path, notice: "You sucessfully created an account. Go ahead and start gossiping !"
 		else
-			redirect_to new_user_path
+			flash.now.alert = @user.errors.messages
+			render :new
 		end
 	end
 
