@@ -1,14 +1,11 @@
 <div class="form mx-auto mt-5">
 	<%= form_for :sessions, :url => sessions_path, class:"form-signin text-center" do |f| %>
 		<h1 class="h3 mb-3 font-weight-normal Gyellow text-center">Please sign in</h1>
-		<%= f.email_field :email,placeholder: 'Email adress', class:"form-control" %>
-		<%= f.password_field :password,placeholder: 'Password', class:"form-control mt-2" %>
-
+		<%= f.email_field :email, placeholder: 'Email adress', class:"form-control" %>
+		<%= f.password_field :password, placeholder: 'Password', class:"form-control mt-2" %>
+		<%= f.check_box :cookies %>
+		<%= f.label :cookies, "Remember me" %>
 		<%= f.submit "Sign in", class:"btn btn-lg btn-warning btn-block mt-3" %>
 	<% end %>
 	<%= link_to "Don't have an account yet ? Register", new_user_path , class:"mt-5 text-white" %>
 </div>
-	<!--<div class="checkbox mb-3">
-			<label>
-				<input type="checkbox" value="remember-me"> Remember me
-			</label>-->

@@ -20,6 +20,8 @@
 	</div>
 		<%= f.password_field :password,placeholder: 'Password', class:"form-control mt-2" %>
 		<%= f.text_area :description, placeholder:'Description', class:"form-control mt-2"%>
+		<%= f.check_box :cookies %>
+		<%= f.label :cookies, "Remember me" %>
 		<%= f.submit "Start gossiping", class:"btn btn-lg btn-warning btn-block mt-3"%>
 	<% end %>
 </div>

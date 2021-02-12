@@ -1,7 +1,8 @@
 /*.alert:nth-of-type(1){margin-top: 56px;}*/
+@import 'bootstrap'
 .jumbotron {margin-top: 70px; display:flex; justify-content: center; background-color: #ffffff2b;}
 .form {width: 30%; display: flex; flex-direction: column; justify-content: center; align-items: center}
-.form label {color: #E3C82E; font-size: 1.5em;}
+.form label {color: white;}
 .form .btn {margin-top: 5px;}
 textarea {width: 100%;}
 .grad{background-image: var(--bs-gradient)}
@@ -13,3 +14,5 @@ textarea {width: 100%;}
 .Gwhite a{color:#FFF}
 .Gwhite a:hover{color:#FFF}
 .red{color: red;}
+
+

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		user = User.find_by(email: session_params["email"])
 		if user && user.authenticate(session_params["password"])
 			log_in(user)
-			remember(user)
+			remember(user) if session_params["cookies"] == "1"
 			redirect_to gossips_path
 		else
 			flash.now.alert = "Invalid email/password combination"
@@ -15,13 +15,12 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		puts current_user
 		log_out(current_user)
 		redirect_to gossips_path, notice: "Logged out"
 	end
 
 	private
 	def session_params
-		params.require(:sessions).permit(:email, :password)
+		params.require(:sessions).permit(:email, :password, :cookies)
 	end
 end
