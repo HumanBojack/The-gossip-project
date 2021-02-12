@@ -1,5 +1,5 @@
 /*.alert:nth-of-type(1){margin-top: 56px;}*/
-@import 'bootstrap'
+@import 'bootstrap';
 .jumbotron {margin-top: 70px; display:flex; justify-content: center; background-color: #ffffff2b;}
 .form {display: flex; flex-direction: column; justify-content: center; align-items: center}
 .form label {color: white;}
