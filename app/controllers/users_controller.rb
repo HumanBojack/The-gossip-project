@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
 		if user.save
 			log_in(user)
-			remember(user) if session_params["cookies"] == "1"
+			puts params["user"]["cookies"]
+			remember(user) if params["user"]["cookies"] == "1"
 			redirect_to gossips_path, notice: "You sucessfully created an account. Go ahead and start gossiping !"
 		else
 			redirect_to new_user_path
@@ -26,6 +27,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:first_name, :last_name, :password, :email, :age, :description, :cookies)
+  	params.require(:user).permit(:first_name, :last_name, :password, :email, :age, :description)
   end
 end

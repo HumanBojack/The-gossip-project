@@ -1,5 +1,5 @@
 class Gossip < ApplicationRecord
-	validates :title, length: {in: 3..25, message: "Title must be between 3 and 25 characters"}
+	validates :title, length: {in: 3..50, message: "Title must be between 3 and 50 characters"}
 	validates :content, presence: true
 	validates :user, presence: true
 	belongs_to :user
