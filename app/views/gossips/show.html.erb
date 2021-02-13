@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<% @gossip.comments.reverse.each do |comment| %>
+<% @gossip.comments.each do |comment| %>
   <div class="card mt-3 mb-3">
     <div class="card-body">
       <h4 class="card-title text-warning "><%= comment.user.first_name %></h4>
